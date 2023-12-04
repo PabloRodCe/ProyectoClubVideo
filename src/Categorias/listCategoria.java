@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  *
- * @author Isaac Sibaja
+ * @author Andrey Rugama
  */
 public class listCategoria {
 
