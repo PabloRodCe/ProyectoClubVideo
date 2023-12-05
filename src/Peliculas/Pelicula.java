@@ -34,7 +34,6 @@ public class Pelicula extends Entidad {
         super(codigo, nombre);
     }
 
-    @Override
     public String toString() {
         return "codigo: " + codigo + " nombre: " + nombre + " categoria: " + categoria; 
     }
