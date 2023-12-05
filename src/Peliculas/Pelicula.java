@@ -5,7 +5,8 @@
 package Peliculas;
 
 import Categorias.Categoria;
-import entidad.Entidad;
+import Entidad.Entidad;
+
 import java.util.Objects;
 
 /**
