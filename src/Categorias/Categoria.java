@@ -4,7 +4,8 @@
  */
 package Categorias;
 
-import entidad.Entidad;
+import Entidad.Entidad;
+
 import java.util.Objects;
 
 /**
