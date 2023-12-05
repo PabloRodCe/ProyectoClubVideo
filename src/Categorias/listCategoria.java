@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Categorias;
 
+import Peliculas.Pelicula;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,15 +17,17 @@ public class listCategoria {
      *
      * @param codigo
      * @param nombre
-     * @param categoria
      */
     public void agregarCategoria(String codigo, String nombre) {
-
-        if (categoriasList.containsKey(codigo) && categoriasList.containsValue(nombre)) {
-            System.out.println("La categoría indicada ya existe");
-        } else {
-            categoriasList.put(codigo, nombre);
-            System.out.println("Categoría agregada exitosamente");
+        try {
+            if (categoriasList.containsKey(codigo) && categoriasList.containsValue(nombre)) {
+                System.out.println("La categoría indicada ya existe");
+            } else {
+                categoriasList.put(codigo, nombre);
+                System.out.println("Categoría agregada exitosamente");
+            }
+        } catch (Exception e) {
+            System.err.println("Error al agregar categoría: " + e.getMessage());
         }
     }
 
@@ -36,10 +35,14 @@ public class listCategoria {
      * Metodo para mostrar categorias
      */
     public void mostrarCategorias() {
-        for (Map.Entry<String, String> entry : categoriasList.entrySet()) {
-            String clave = entry.getKey();
-            String valor = entry.getValue();
-            System.out.println("Clave: " + clave + ", Valor: " + valor);
+        try {
+            for (Map.Entry<String, String> entry : categoriasList.entrySet()) {
+                String clave = entry.getKey();
+                String valor = entry.getValue();
+                System.out.println("Clave: " + clave + ", Valor: " + valor);
+            }
+        } catch (Exception e) {
+            System.err.println("Error al mostrar categorías: " + e.getMessage());
         }
     }
 
@@ -47,27 +50,36 @@ public class listCategoria {
      * Metodo que elimina categorias de el ArrayList categoriaList
      *
      * @param codigo
-     * @param categoria
+     * @param nombre
      */
     public void eliminarCategoria(String codigo, String nombre) {
-        if (categoriasList.containsKey(codigo) && categoriasList.containsValue(nombre)) {
-            categoriasList.remove(codigo, nombre);
-            System.out.println("Categoría eliminada exitosamente");
-        } else {
-            System.out.println("No se encontró la categoría indicada");
+        try {
+            Pelicula peli = new Pelicula(codigo, nombre);
+            if (peli.getCodigo().contains(codigo)) {
+                if (categoriasList.containsKey(codigo) && categoriasList.containsValue(nombre)) {
+                    categoriasList.remove(codigo, nombre);
+                    System.out.println("Categoría eliminada exitosamente");
+                }
+            } else {
+                System.out.println("No se encontró la categoría indicada");
+            }
+        } catch (Exception e) {
+            System.err.println("Error al eliminar categoría: " + e.getMessage());
         }
     }
 
     //Faltan correcciones
     public void actualizarCategoria(String codigo, String nombre, String codigoNuevo, String nombreNuevo) {
-
-        if (categoriasList.containsKey(codigo) && categoriasList.containsValue(nombre)) {
-            categoriasList.remove(codigo, nombre);
-            categoriasList.put(codigoNuevo, nombreNuevo);
-            System.out.println("Categoría actualizada exitosamente");
-        } else {
-
-            System.out.println("No se encontró la categoría indicada");
+        try {
+            if (categoriasList.containsKey(codigo) && categoriasList.containsValue(nombre)) {
+                categoriasList.remove(codigo, nombre);
+                categoriasList.put(codigoNuevo, nombreNuevo);
+                System.out.println("Categoría actualizada exitosamente");
+            } else {
+                System.out.println("No se encontró la categoría indicada");
+            }
+        } catch (Exception e) {
+            System.err.println("Error al actualizar categoría: " + e.getMessage());
         }
     }
 }
